@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "md5": "^2.3.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20",
     "socket.io": "^4.5.3",
-    "socket.io-client": "^4.5.3"
+    "socket.io-client": "^4.5.3",
+    "sqlite3": "^5.1.2"
   }
 }

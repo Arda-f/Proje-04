@@ -56,32 +56,36 @@ socket.on("chat", datas => {
         else{
             feedback.innerText =  `${datas.sender} yazıyor...`
             feedback.style= "color:white;"
-        } 
-        })
-
-        if (datas.message == "") {}
-        //Mesajı gönderen taraftın gördüğü
-        else{
-        if(socket.id == datas.sender){
-            msgs.innerHTML += 
-            `<div style='witdh:100%; '>
-                <div class='right' id='msg'>
-                    ${datas.message}
-                </div>
-            </div>`
-       }
-        //Mesajı alan taraftın gördüğü
-        else{
-            msgs.innerHTML +=   
-                    `<div style='witdh:100%;'>
-                        <div class='left' id='msg'>
-                            ${datas.message}
-                        </div>
-                    </div>`
         }
-        //Her yeni mesaj geldiğinde sayfa aşağıya inmeli
-        msgs.scrollTo({top:9999999999999999999})
-        //Mesaj atıldıktan sonra kutuyu temizliyor
-        dt.value = ""
+    })
+
+    if (datas.message == "") {}
+    //Mesajı gönderen taraftın gördüğü
+    else{
+        al(socket, datas, msgs)
     }
 })
+
+function al(socket, datas, msgs) {
+    if(socket.id == datas.sender){
+        msgs.innerHTML += 
+        `<div style='witdh:100%; '>
+            <div class='right' id='msg'>
+                ${datas.message}
+            </div>
+        </div>`
+    }
+    //Mesajı alan taraftın gördüğü
+    else{
+        msgs.innerHTML +=   
+        `<div style='witdh:100%;'>
+            <div class='left' id='msg'>
+                ${datas.message}
+            </div>
+        </div>`
+    }
+    //Her yeni mesaj geldiğinde sayfa aşağıya inmeli
+    msgs.scrollTo({top:9999999999999999999})
+    //Mesaj atıldıktan sonra kutuyu temizliyor
+    dt.value = ""
+}   

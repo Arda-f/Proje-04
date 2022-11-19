@@ -1,18 +1,12 @@
 const socket = require("socket.io")
 const express = require("express")
-const sql = require("mysql")
-const con = sql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "04516428",
-  database: "socketio"
-})
-con.connect(() => {
-  console.log("Mysql Connected")
-});
-
+const sqlite = require("sqlite3").verbose()
+const  md = require("md5")
+const md5 = require("md5")
 const app = express()
+const onChat = require("./events/onChat.js")
+const onHistory = require("./events/onHistory")
+const DBSOURCE = "database/db.sqlite"
 
 const server = app.listen(3000)
 
@@ -20,38 +14,18 @@ app.use(express.static("./page"))
 
 const io = socket(server)
 
-var sqlQuery = `INSERT INTO chathistory(users, message) VALUES ?`
-var sqlQuery2 = `SELECT * FROM chathistory;`
+var db = new sqlite.Database(DBSOURCE, (e) =>{if(e){console.log(e)}})      
 
 io.on('connection', (socket) => {
-    //Mesajların döndürüldüğü kısım
-    socket.on('chat', (datas) => {
-      io.emit('chat', datas);
-      //Mesajları veri tabanına kaydedilmesi için script
-      var values = [
-        [datas.sender, datas.message]
-      ]
-      //Mesaj boşsa hata vermesi için script
-      if(datas.message == ""){console.log("mesaj boş olamaz")}
-      else{
-        con.query(sqlQuery, [values]);       
-        console.log("Data Changed")
-      }
+    onChat(socket, io, db)
+    onHistory(socket, io, db, sqlite, DBSOURCE)
+    
+})
 
-    });
-    console.log(socket)
-    socket.on('history', (datas) => {
-        con.query(sqlQuery2, (err, results, fields) => {
-          datas = results
-          io.emit('history', datas);
-        });
-        
-      });
-  });
 
       
       
-
+  
       
   // <!-- <script>
   //       var btn = document.getElementById("btn")
