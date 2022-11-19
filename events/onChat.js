@@ -1,14 +1,10 @@
-module.exports = (socket, io, db) => {
+module.exports = {
+  execute(socket, io, db){
     //Mesajların döndürüldüğü kısım
     socket.on('chat', (datas) => {
         io.emit('chat', datas);
-        //Mesajları sqlite yazım kuralına göre düzenler
-        var liteRun = 
-        `INSERT INTO history(users, message) VALUES('` +
-        datas.sender + `','` + 
-        datas.message + `'` + `)` 
-        //bitiş
-
+        //Mesajları veritabanına aktarır
+        var liteRun = `INSERT INTO history(users, message) VALUES('${datas.sender}','${datas.message}')`
         //Mesaj boşsa hata vermesi için script
         if(datas.message == ""){console.log("mesaj boş olamaz")}
         else{
@@ -17,5 +13,6 @@ module.exports = (socket, io, db) => {
           if(e){console.log(e)}
           else{console.log("Data Changed")}
         })}
-      });
+      })
+  }
 }

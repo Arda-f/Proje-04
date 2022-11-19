@@ -1,19 +1,4 @@
-// const sqlite = require("sqlite3").verbose()
-// const  md = require("md5")
+const fs = require("fs")
+const eventFiles = fs.readdirSync("./events", "utf-8").filter(file => file.endsWith(".js"))
 
-// const DBSOURCE = "databases/db.sqlite"
 
-// var db = new sqlite.Database(DBSOURCE, (e) =>{
-//     if(e){console.log(e.name)}
-//     else{console.log("database connected")}
-    
-    
-// })
-
-var sender = "userİd"
-var content = "Content"
- 
-
-      console.log(runTemplate)
-
-      

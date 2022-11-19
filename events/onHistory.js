@@ -1,4 +1,5 @@
-module.exports = (socket, io, db, sqlite, DBSOURCE) => {
+module.exports = {
+  execute(socket, io, db, sqlite, DBSOURCE){
     //Mesaj geçmişi için oluşturulan event
     socket.on('history', (datas) => {
         //Geçmiş Mesajları Okumak için veri tabanına bağlanır
@@ -12,4 +13,5 @@ module.exports = (socket, io, db, sqlite, DBSOURCE) => {
         })
       })
     })
+  }  
 }
