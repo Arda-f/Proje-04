@@ -3,15 +3,15 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>
-    </title>
+    <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://cdn.socket.io/4.5.3/socket.io.min.js" integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="Css/login-register.css">
-</head><!-- CSS only -->
+</head>
 <body class="bg-dark">
-    <div class="container bg-black" style="margin-top: 5%;">
+    
+    <div class="container bg-black" style="margin-top: 2%;">
         <div class="card bg-black location">
             <div class="form-group">
                 <div>
@@ -19,28 +19,32 @@
                     <p><input id="username" type="text" class="form-text form-control" placeholder=" Username"></p>
                 </div>
                 <div>
+                    <span class="form-label text-white">Email</span>
+                    <p><input id="email" type="email" class="form-text form-control" placeholder=" Email"></p>
+                </div>
+                <div>
                     <span class="form-label text-white">Password</span>
-                    <p><input id="password" type="text" class="form-text form-control" placeholder=" Username"></p>
+                    <p><input id="password" type="text" class="form-text form-control" placeholder=" Password"></p>
+                </div>
+                <div>
+                    <span class="form-label text-white">Password Again</span>
+                    <p><input  id="password2" type="text" class="form-text form-control" placeholder=" Password Again"></p>
                 </div>
             </div>
             <div class="input-group text-white">
-                <span><input type="checkbox" class="checkbox" id="rem" value="true"> Remember Me</span>
+                <span><input id="rem" type="checkbox" class="checkbox" value="true"> Remember Me</span>
             </div>
             <div class="form-group">
                 <button id="login" class="btn btn-default border-1 border-white form-control">Login</button>
                 <div><small><a class="text-sm">Forgot Password?</a></small></div>
                 <div>
-                    <p class="text-white text-sm-center">
-                        Do not have an account?
-                    </p>
-                </div>
-                <div>
-                    <a href="./register.html" class="btn btn-default border-1 border-white form-control" href="#">Create Account</a>
+                    <span class="text-white text-sm-center">Do not have an account?</span>
                 </div>
             </div>
         </div>   
     </div>
-    <script src="Js/login.js"></script>
+
+    <script src="Js/register.js"></script>
 
 </body>
 </html>

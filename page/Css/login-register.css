@@ -1,0 +1,19 @@
+.location{
+    margin: auto;
+}
+.btn{
+    color: white;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+.container, .card{
+    border-radius: 50px;
+}
+.container{
+    padding: 5%;
+    margin-left: auto;
+    width: 40%;
+    min-width: 350px;
+}

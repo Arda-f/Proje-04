@@ -1,4 +1,5 @@
 module.exports = {
+  "moduleName":"onChat",
   execute(socket, io, db){
     //Mesajların döndürüldüğü kısım
     socket.on('chat', (datas) => {
@@ -14,5 +15,5 @@ module.exports = {
           else{console.log("Data Changed")}
         })}
       })
-  }
+  } 
 }

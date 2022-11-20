@@ -1,4 +1,5 @@
 module.exports = {
+  "moduleName":"onHistory",
   execute(socket, io, db, sqlite, DBSOURCE){
     //Mesaj geçmişi için oluşturulan event
     socket.on('history', (datas) => {
