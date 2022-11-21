@@ -16,11 +16,30 @@ btn.addEventListener("click", () => {
 //Yazarken Enter'a basarsa yapılacaklar
 dt.addEventListener("keypress", e => {if(e.key == "Enter"){socket.emit("chat", {message:dt.value, sender:item.user})}})
  
-document.addEventListener("DOMContentLoaded", () => {socket.emit("history", {message: "", users: ""})})
+document.addEventListener("DOMContentLoaded", () => {
+    socket.emit("history", {message: "", users: ""})
+    if(item.user != ""){
+        socket.emit("auth", {user:item.user, pass:item.pass}) 
+    }
 
+})
+socket.on("auth", datas => {
+    //Yerel depolamada veri varsa otomatik giriş için
+    if(!item){
+        for (const i in datas) {
+            if(item.token == datas[i].token){
+            //Token ile giriş yapılıyorsa şifre istemez
+            window.location.href = "http://localhost:3000/"
+
+            }
+        }  
+    }
+    
+})
 //Geçmiş mesajları yükleyen bölüm
 socket.on("history", datas => {
-    datas.forEach(result => {
+    if(item){
+       datas.forEach(result => {
         if(item.user == result.users){
             msgs.innerHTML += 
                 `<div style='witdh:100%; '>
@@ -39,7 +58,13 @@ socket.on("history", datas => {
             }
 
         msgs.scrollTo({top:9999999999999999999})
-    })
+    }) 
+    }
+    else{
+        window.location.href = "http://localhost:3000/"
+
+    }
+    
 
 })
 //Yazıyor... kısmı

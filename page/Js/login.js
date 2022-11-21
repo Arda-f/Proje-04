@@ -29,9 +29,7 @@ socket.on("auth", datas => {
         for (const i in datas) {
             if(item.token == datas[i].token){
                 //Token ile giriş yapılıyorsa şifre istemez
-                alert("token login detected")
-                alert("login succesful")
-                window.open("chat.html")
+                window.location.href += "chat.html"
             }
         }
     }
@@ -39,17 +37,17 @@ socket.on("auth", datas => {
     for (const i in datas) {
         if(username.value == datas[i].token){
             //Token ile giriş yapılıyorsa şifre istemez
-            alert("token login detected")
-            alert("login succesful")
-            window.open("chat.html")
+            window.location.href += "chat.html"
+            //Oturumun açık kalması için yerel depolamaya veri gönderir
+            localStorage.setItem("user-info", JSON.stringify(datas[i]))
+            window.location.href = "chat.html"
         }
         else{
             //Kullanıcı adı veya email ile şifeyi sorgular
             if(username.value == datas[i].user || username.value == datas[i].email && pass.value == datas[i].pass){
                 //Oturumun açık kalması için yerel depolamaya veri gönderir
                 localStorage.setItem("user-info", JSON.stringify(datas[i]))
-                alert("login succesful")
-                window.open("chat.html")
+                window.location.href = "chat.html"
             }  
         }
     }
