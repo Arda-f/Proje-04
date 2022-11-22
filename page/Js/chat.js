@@ -14,7 +14,12 @@ socket.on("scriptNames", files => {
     }
 })
 
-
+document.addEventListener("DOMContentLoaded", () => {
+        socket.emit("history", {message: "", users: ""})
+        if(item.user != ""){
+            socket.emit("auth", {user:item.user, pass:item.pass}) 
+        }
+    })
 
 
 
