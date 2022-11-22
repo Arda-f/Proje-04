@@ -6,9 +6,14 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.3/socket.io.js" integrity="sha512-iWPnCISAd/J+ZacwV2mbNLCaPGRrRo5OS81lKTVPtRg1wGTC20Cfmp5Us5RcbLv42QLdbAWl0MI57yox5VecQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js" integrity="sha512-mz0EI+Ay1uIJP7rZEX8C/JlTAcHRIQ8Sny4vxmmj8MSzDJgG9NxxY2pUmOGv1lO7imFIFMyjjCzEXEywNgaUdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body style="background-color:#1c1c1c;">
+    <div>
+        <div>
+            <div><button id="out" style="position: absolute; right: 70px;">Log out</button></div>
+        </div>
+    </div>
     <div id="border" class="tema">
         <div id="msgArea" class="tema"></div>
         <div id="footer" class="tema">
@@ -21,7 +26,7 @@
     </div>
     
     <link rel='stylesheet' href='Css/chat.css'>
-    <script src="Js/chat.js"></script>
+    <script src="Js/chat.js" type="module"></script>
  
 
 </body>

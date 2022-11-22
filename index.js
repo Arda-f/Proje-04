@@ -6,10 +6,8 @@ const app = express()
 const onChat = require("./events/onChat.js")
 const onHistory = require("./events/onHistory")
 const fs = require("fs")
-
 const DBSOURCE = "database/db.sqlite"
 const DBUSERS = "database/db.sqlite"
-
 const server = app.listen(3000)
 
 app.use(express.static("./page"))
@@ -18,8 +16,7 @@ const io = socket(server)
 
 var db = new sqlite.Database(DBSOURCE, (e) =>{if(e){console.log(e)}})       
 
-//Event handler
-
+// // //Event handler
 //Js dosyalarını çeker
 const eventFiles = fs.readdirSync("./events", "utf-8").filter(file => file.endsWith(".js"))
 //Js dosyalarının duracağı boş diziyi oluşturur
@@ -33,49 +30,16 @@ eventFiles.forEach(file => {
 })
 
 io.on('connection', (socket) => {
-  
+  const files = fs.readdirSync("./page/Js/chatEventListeners/")
+  socket.emit("scriptNames", files)
   //Js dosyalarını tek tek çalıştırmak için döngü
   console.log("====================================")
   for (i = 0; i < events.length; i++){
-    //Fonksiyonun çağırıldığı kısım
+  // // // //   //Fonksiyonun çağırıldığı kısım
     events[i].execute(socket, io, db, sqlite, DBSOURCE, DBUSERS)
-    console.log("Yüklü eventler: " + events[i].moduleName + "\n---------------------------")
+  //   console.log("Yüklü eventler: " + events[i].moduleName + "\n---------------------------")
   }
-  console.log("====================================")
+  // console.log("====================================")
 })
 
-      
-      
-  
-      
-  // <!-- <script>
-  //       var btn = document.getElementById("btn")
-  //       var data = document.getElementById("data")
-  //       var msgArea = document.getElementById("msgArea")
-  //       var feedback = document.getElementById("feedback")
 
-        
-
-  //       btn.addEventListener("click",() => {newMsg()})
-  //       data.addEventListener("input", () => {
-  //           if(data.value == ""){
-  //               feedback.innerText = ""
-  //           }
-  //           else{
-  //               feedback.innerText = "yazıyor..."
-  //           }
-  //       })
-
-
-  //       function newMsg() {
-  //           var newP = document.createElement("span")
-  //           newP.innerText = data.value + "\n"
-  //           if(data.value == "") {}
-  //           else{
-  //               msgArea.appendChild(newP)
-  //               data.value = ""
-  //               feedback.innerText = ""
-  //           }
-            
-  //       }
-  //   </script> -->

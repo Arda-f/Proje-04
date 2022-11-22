@@ -4,25 +4,40 @@ const msgs = document.getElementById("msgArea")
 const dt = document.getElementById("data")
 const btn = document.getElementById("btn")
 const btn2 = document.getElementById("btn2")
-const item = JSON.parse(localStorage.getItem(localStorage.key(0)))
+const out = document.getElementById("out")
+const item = JSON.parse(localStorage.getItem("user-info"))
+
+socket.on("scriptNames", files => {
+    for(let i = 0; i < files.length; i++){
+        const app = import(`./chatEventListeners/` + files[i])
+        app.then(value => {value.default(socket, item, dt, btn, out)})
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
 //Başlangıçta mesaj aşağıda olmalı
 msgs.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 //Göndere tıklandığında yapılacaklar
-btn.addEventListener("click", () => {
-    socket.emit("chat", {message:dt.value, sender:item.user})
-    socket.emit("writing", {sender: "\n"})
-    feedback.innerText = "\n"
-})
-//Yazarken Enter'a basarsa yapılacaklar
-dt.addEventListener("keypress", e => {if(e.key == "Enter"){socket.emit("chat", {message:dt.value, sender:item.user})}})
- 
-document.addEventListener("DOMContentLoaded", () => {
-    socket.emit("history", {message: "", users: ""})
-    if(item.user != ""){
-        socket.emit("auth", {user:item.user, pass:item.pass}) 
-    }
 
-})
+//Yazarken Enter'a basarsa yapılacaklar
+
+
+
+// document.addEventListener("close", () => {
+//     socket.emit("auth", {user:"", pass:""}) 
+//     if(!localStorage.getItem("remember")){localStorage.clear()}
+// })
+
 socket.on("auth", datas => {
     //Yerel depolamada veri varsa otomatik giriş için
     if(!item){
