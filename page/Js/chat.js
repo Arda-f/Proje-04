@@ -17,12 +17,12 @@ for(const file of eventNames.chatFile){
 }
 
 //Başlangıçta mesaj aşağıda olmalı
-msgs.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+client.msgs.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 //=====================//İçerik Yüklendiğinde//=====================//
 document.addEventListener("DOMContentLoaded", () => {
-        socket.emit("history", {message: "", users: ""})
-        if(item.user != ""){
-            socket.emit("auth", {user:item.user, pass:item.pass}) 
+        client.socket.emit("history", {message: "", users: ""})
+        if(client.item.user != ""){
+            client.socket.emit("auth", {user:client.item.user, pass:client.item.pass}) 
         }
     })
 

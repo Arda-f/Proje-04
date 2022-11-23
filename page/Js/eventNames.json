@@ -1,10 +1,8 @@
 {
  "chatFile": [
-  "docOnLoadded.js",
   "onAuth.js",
   "onChat.js",
   "onHistory.js",
-  "onMessageBoxClick.js",
   "outButtonClick.js",
   "sendButtonClick.js",
   "sendKeyPress.js"
