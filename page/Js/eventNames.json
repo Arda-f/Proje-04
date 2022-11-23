@@ -1,0 +1,24 @@
+{
+ "chatFile": [
+  "docOnLoadded.js",
+  "onAuth.js",
+  "onChat.js",
+  "onHistory.js",
+  "onMessageBoxClick.js",
+  "outButtonClick.js",
+  "sendButtonClick.js",
+  "sendKeyPress.js"
+ ],
+ "loginFile": [
+  "onAuth.js",
+  "onLoginClick.js",
+  "onPassKeypress.js",
+  "onUsernameKeypress.js"
+ ],
+ "registerFile": [
+  "onAddUser.js",
+  "onAuth.js",
+  "onPassKeypress.js",
+  "onRegisterClick.js"
+ ]
+}

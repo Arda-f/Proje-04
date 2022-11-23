@@ -1,6 +1,41 @@
+#addBox{
+    margin-left: 60px;
+    width: max-content;
+    margin-top: 10px;
+    border: 1px solid #363636;
+}
+img{
+    width: 60px;
+    height: 60px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 #msgArea{
     height: 89%;
     overflow-y: auto;
+}
+#contents{
+    margin-top: 10px;
+}
+#MessageBoxs{
+    overflow-y: scroll;
+    width: 276px;
+    height: 605px;
+    position: absolute;
+    margin-left: 100px;
+    margin-right: 100px;
+    border: 1px solid #363636;
+}
+.MessageBox{
+    display: flex;
+    /* padding-right: 79px; */
+    padding-right: 45px;
+    margin-left: 15px;
+    overflow-x: hidden;
+    max-width: 185px;
+    margin-top: 15px;
+    border: 1px solid #363636;
 }
 .left{
     background-color:black;
@@ -18,7 +53,7 @@
     border: 1px solid #363636;
     width: 610px;
     height: 597px;
-    margin: auto;
+    margin-left: 500px;
     padding: 5px;
 }
 #feedback{

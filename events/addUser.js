@@ -1,11 +1,12 @@
 module.exports = {
   "moduleName":"addUser",
-  execute(socket, io, DBUSERS, sqlite){
+  execute(client, socket){
+    // console.log(element)
         // socket.on("logedUser", data => {
     //     socket.emit("logedUser", data)
     //     db.run(`INSERT INTO userData(user, pass) VALUES('${data.user}','${data.pass}')`) 
     // })
-    var db = new sqlite.Database("./database/logedUsers.sqlite",(e) => {if(e){console.log(e)}})
+    var db = new client.sqlite.Database("./database/logedUsers.sqlite",(e) => {if(e){console.log(e)}})
 
     socket.on("addUser", datas => {
         datas.token = Math.floor(Math.random()* 100000000000)

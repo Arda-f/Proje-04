@@ -1,9 +1,9 @@
-function execute(socket, item, dt, btn) {
-    dt.addEventListener("keypress", e => {
+function execute(client) {
+    client.dt.addEventListener("keypress", e => {
         if(e.key == "Enter"){
-            socket.emit("chat", {
-                message:dt.value,
-                sender:item.user
+            client.socket.emit("chat", {
+                message:client.dt.value,
+                sender:client.item.user
             })
         }
     })

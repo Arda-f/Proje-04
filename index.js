@@ -1,45 +1,40 @@
-const socket = require("socket.io")
-const express = require("express")
-const sqlite = require("sqlite3").verbose()
-const md5 = require("md5")
-const app = express()
-const onChat = require("./events/onChat.js")
-const onHistory = require("./events/onHistory")
-const fs = require("fs")
-const DBSOURCE = "database/db.sqlite"
-const DBUSERS = "database/db.sqlite"
-const server = app.listen(3000)
-
-app.use(express.static("./page"))
-
-const io = socket(server)
-
-var db = new sqlite.Database(DBSOURCE, (e) =>{if(e){console.log(e)}})       
-
-// // //Event handler
-//Js dosyalarını çeker
-const eventFiles = fs.readdirSync("./events", "utf-8").filter(file => file.endsWith(".js"))
-//Js dosyalarının duracağı boş diziyi oluşturur
+//=====================//Gereklilikler//=====================//
+const client = {
+  socket:require("socket.io"),
+  fs:require("fs"),
+  express: require("express"),
+  sqlite: require("sqlite3"),
+  md5: require("md5"),
+  config: require("./page/Js/config.json"),
+  DBSOURCE: "database/db.sqlite",
+  DBUSERS: "database/db.sqlite",
+  debug:"Dökümandan içerik çekilir"
+}
+//=====================//Sayfa Eventleri Yüklenir//=====================//
+const chatFile = client.fs.readdirSync("./page/Js/chatEventListeners")
+const loginFile = client.fs.readdirSync("./page/Js/loginEventListeners")
+const registerFile = client.fs.readdirSync("./page/Js/registerEventListeners")
+client.fs.writeFileSync("./page/Js/eventNames.json", JSON.stringify({chatFile, loginFile, registerFile},null,1),"utf-8")
+//=====================//Bağlantılar Başlatılır//=====================//
+client.app = client.express()
+const server = client.app.listen(3000)
+client.app.use(client.express.static("./page"))
+client.io = client.socket(server)
+client.db = new client.sqlite.Database(client.DBSOURCE, (e) =>{if(e){console.log(e)}})       
+//=====================//Event Handler//=====================//
+const eventFiles = client.fs.readdirSync("./events", "utf-8").filter(file => file.endsWith(".js"))
 const events = []
-//Dosyaları tek tek alır
 eventFiles.forEach(file => {
-    //kütüphane şeklinde dahil eder
     const event = require(`./events/${file}`)
-    //Oluşturulan boş diziye ekler
     events.push(event)
 })
-
-io.on('connection', (socket) => {
-  const files = fs.readdirSync("./page/Js/chatEventListeners/")
-  socket.emit("scriptNames", files)
-  //Js dosyalarını tek tek çalıştırmak için döngü
-  console.log("====================================")
+//=====================//Bağlantı Sağlandığında Yapılacaklar//=====================//
+client.io.on('connection', (socket) => {
+  console.log("//===========//Bağlantı Sağlandı//===========//")
+//=====================//Tüm Eventleri Çağıran Kısım//=====================//
   for (i = 0; i < events.length; i++){
-  // // // //   //Fonksiyonun çağırıldığı kısım
-    events[i].execute(socket, io, db, sqlite, DBSOURCE, DBUSERS)
-  //   console.log("Yüklü eventler: " + events[i].moduleName + "\n---------------------------")
+    events[i].execute(client, socket)
   }
-  // console.log("====================================")
 })
 
 

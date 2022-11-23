@@ -1,16 +1,15 @@
 module.exports = {
   "moduleName":"onHistory",
-  execute(socket, io, db, sqlite, DBSOURCE){
+  execute(client, socket){
     //Mesaj geçmişi için oluşturulan event
     socket.on('history', (datas) => {
         //Geçmiş Mesajları Okumak için veri tabanına bağlanır
-      new sqlite.Database(DBSOURCE, (e) =>{
+      new client.sqlite.Database(client.DBSOURCE, (e) =>{
         if(e){console.log(e)}
-        else{console.log("database connected")}
         //Veri tabanından satırları çeker
-        db.all(`SELECT * FROM history;`, (err, results) => {
+        client.db.all(`SELECT * FROM history;`, (err, results) => {
           datas = results
-          io.emit('history', results)
+          client.io.emit('history', results)
         })
       })
     })

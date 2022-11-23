@@ -1,10 +1,10 @@
-function execute(socket, item, dt, btn) {
-    btn.addEventListener("click", () => {
-        socket.emit("chat", {
-            message:dt.value, 
-            sender:item.user
+function execute(client) {
+    client.btn.addEventListener("click", () => {
+        client.socket.emit("chat", {
+            message:client.dt.value, 
+            sender:client.item.user
         })
-        socket.emit("writing", {
+        client.socket.emit("writing", {
             sender: "\n"
         })
         // feedback.innerText = "\n"

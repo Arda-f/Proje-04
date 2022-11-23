@@ -1,8 +1,7 @@
-function execute(socket, item, dt, btn, out) {
-    out.addEventListener("click", () => {
-        if(localStorage.getItem("remember")){
-            localStorage.clear()
-        }
+function execute(client) {
+    client.out.addEventListener("click", () => {
+        localStorage.clear()
+        window.location.href = "http://localhost:3000/"
     })
 }
 
