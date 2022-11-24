@@ -15,28 +15,27 @@ img{
     height: 89%;
     overflow-y: auto;
 }
-#contents{
-    margin-top: 10px;
-}
+#contents{margin-top: 15px;}
+a{text-decoration: none; color: white;}
 #MessageBoxs{
+    display: block;
     overflow-y: scroll;
-    width: 276px;
-    height: 605px;
+    width: 320px;
+    height: 607px;
     position: absolute;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 11%;
     border: 1px solid #363636;
 }
 .MessageBox{
     display: flex;
-    /* padding-right: 79px; */
+    padding: 9px;
     padding-right: 45px;
-    margin-left: 15px;
     overflow-x: hidden;
-    max-width: 185px;
-    margin-top: 15px;
+    max-width: 285px;
     border: 1px solid #363636;
+    height: 60px;
 }
+.MessageBox:hover{background-color: #363636;}
 .left{
     background-color:black;
     border:1px solid #363636;
@@ -49,11 +48,15 @@ img{
     display:block;
     float: right;
 }
+.selfName, .selfSpan{
+    border: none;
+    outline: none;
+}
 #border{
     border: 1px solid #363636;
     width: 610px;
     height: 597px;
-    margin-left: 500px;
+    margin-left: 35%;
     padding: 5px;
 }
 #feedback{
@@ -65,7 +68,7 @@ img{
     width: 550px;
     margin: auto;
 } 
-input{
+#data{
     height: 30px;
     width: 440px;
     border: none;

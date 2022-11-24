@@ -1,5 +1,4 @@
 function execute(client) {
-
     // MessageBox.addEventListener("click", () => {window.location.href = "http://localhost:3000"})
     //Geçmiş mesajları yükleyen bölüm
 client.socket.on("history", datas => {    
@@ -30,6 +29,10 @@ client.socket.on("history", datas => {
     {
         window.location.href = "http://localhost:3000/"
     }
+    client.selfNames = document.querySelectorAll("input[class='selfName']")
+    client.selfSpan = document.querySelectorAll("input[class='selfSpan']")
+    // console.log(client.selfNames)
+    
 })
 }
 
