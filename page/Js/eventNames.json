@@ -1,13 +1,11 @@
 {
  "chatFile": [
-  "emitMessageBoxCreate.js",
+  "Box-History-Delete.js",
+  "MessageBoxCreate.js",
   "onAuth.js",
   "onChat.js",
-  "onHistory.js",
-  "onMessageBoxCreate.js",
-  "onMessageBoxHistory.js",
+  "onSelectedHistory.js",
   "outButtonClick.js",
-  "selfNamesKeyPress.js",
   "sendButtonClick.js",
   "sendKeyPress.js"
  ],

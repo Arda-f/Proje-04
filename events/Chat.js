@@ -4,8 +4,11 @@ module.exports = {
     //Mesajların döndürüldüğü kısım
     socket.on('chat', (datas) => {
         client.io.emit('chat', datas);
+        console.log(datas)
         //Mesajları veritabanına aktarır
-        var liteRun = `INSERT INTO history(users, message) VALUES('${datas.sender}','${datas.message}')`
+        var liteRun = `INSERT INTO ${datas.selfName}(message ,sender) VALUES(
+          '${datas.message}','${datas.sender}'
+        )`
         //Mesaj boşsa hata vermesi için script
         if(datas.message == ""){console.log("mesaj boş olamaz")}
         else{

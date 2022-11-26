@@ -25,23 +25,13 @@ for(const file of eventNames.chatFile)
 client.msgs.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 //=====================//İçerik Yüklendiğinde//=====================//
 document.addEventListener("DOMContentLoaded", () => {
-        client.socket.emit("history", {message: "", users: ""})
-        client.socket.emit("MessageBoxHistory", {name: "test", comment: "test"})
+    client.socket.emit("FirsBoxCreater", JSON.parse(localStorage.getItem("user-info")).user)
+    client.socket.emit("MessageBoxHistory", {name: ".", comment: ".", sender:JSON.parse(localStorage.getItem("user-info")).user})
         if(client.item.user != "")
         {
             client.socket.emit("auth", {user:client.item.user, pass:client.item.pass}) 
         }
-        const a = document.createElement("a")
-                a.href = "#"
-                a.innerHTML = 
-                    `<div class="MessageBox">
-                        <img src="resim1.jpg" alt="">
-                        <div id="contents">
-                            <div><input class="selfName" require placeholder='MessageBox Name'></div>
-                            <div><input class="selfSpan" require placeholder='MessageBox Comment'></div>
-                        </div>
-                    </div>`
-                 client.MessageBoxs.appendChild(a)
+                
     })
 //===================================================================//
 // selfNames.forEach(selfName => {
