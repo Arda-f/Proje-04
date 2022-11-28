@@ -1,46 +1,60 @@
-//=====================//Gereklilikler//=====================//
 import config from "./config.json" assert {type: 'json'}
 import eventNames from "./eventNames.json" assert {type: 'json'}
 const client = {
     socket: io.connect(config.host),
-    msgs: document.getElementById("msgArea") ,
-    dt: document.getElementById("data"),
-    btn: document.getElementById("btn"),
-    btn2: document.getElementById("btn2"),
-    out: document.getElementById("out"),
-    MessageBoxs: document.getElementById("MessageBoxs"),
     addBox: document.getElementById("addBox"),
-    item: JSON.parse(localStorage.getItem("user-info")),
-    selfNames: document.getElementsByClassName("selfName")
-    // selfNames: document.querySelectorAll("input[class='selfName']")
+    MessageBoxArea: document.getElementById("MessageBoxs"),
+    messageİnput: document.getElementById("data"),
+    messageArea: document.getElementById("msgArea"),
+    messageButton: document.getElementById("btn"),
+    bar: document.getElementById("bar"),
+    logout: document.getElementById("out")
 }
-//=====================//Event Handler//=====================//
-for(const file of eventNames.chatFile)
-{
-    client.modules = import("./chatEventListeners/" + file)
-    client.modules.then(value => value.default(client))
-}
+client.messageArea.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
-//Başlangıçta mesaj aşağıda olmalı
-client.msgs.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-//=====================//İçerik Yüklendiğinde//=====================//
 document.addEventListener("DOMContentLoaded", () => {
-    client.socket.emit("FirsBoxCreater", JSON.parse(localStorage.getItem("user-info")).user)
-    client.socket.emit("MessageBoxHistory", {name: ".", comment: ".", sender:JSON.parse(localStorage.getItem("user-info")).user})
-        if(client.item.user != "")
-        {
-            client.socket.emit("auth", {user:client.item.user, pass:client.item.pass}) 
-        }
-                
+    if(JSON.parse(localStorage.getItem("user-info")) == null)
+    {
+        document.location.href = "http://localhost:3000"
+    }
+    eventNames.chatFile.forEach(file => {
+        const module = import("./chatEventListeners/" + file)
+        module.then(value => value.default(client))
     })
-//===================================================================//
-// selfNames.forEach(selfName => {
-//     selfName.addEventListener("click", (e) => {
-//         console.log(selfName)
-//         // if(e.key == "Enter")
-//         // {
-//         //     const div = document.createElement("div").innerText = "client.selfNames.value"
-//         //     selfName.replaceWith(div)
-//         // // }
-//     })
-// })
+    if(document.location.pathname != "/users/federaliste/index.html")
+    {
+        client.socket.emit("boxChatHistory",{
+            user: JSON.parse(localStorage.getItem("user-info")).user,
+            pageName: localStorage.getItem("pageName")
+        })
+
+        client.socket.on("boxChatHistory", data => {
+            data.forEach(value => {
+                if(JSON.parse(localStorage.getItem("user-info")).user == value.user){
+                    client.messageArea.innerHTML += 
+                    `<div style='witdh:100%; '>
+                        <div class='right' id='msg'>
+                            ${value.message}
+                        </div>
+                    </div>`
+                }
+                //Mesajı alan taraftın gördüğü
+                else{
+                    client.messageArea.innerHTML +=   
+                    `<div style='witdh:100%;'>
+                        <div class='left' id='msg'>
+                            ${value.message}
+                        </div>
+                    </div>`
+                }
+                //Her yeni mesaj geldiğinde sayfa aşağıya inmeli
+                client.messageArea.scrollTo({top:9999999999999999999})
+            })
+        }) 
+    }
+    else
+    {
+        client.bar.remove()
+        localStorage.setItem("pageName","index")
+    }
+})

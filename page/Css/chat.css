@@ -2,8 +2,8 @@
     background-color: black;
     color: white;
     border: 1px solid white;
-    margin-top: 17px;
-    margin-left: 27px;
+    margin-top: -50px;
+    margin-right: -67px;
     float: right;
 }
 .deleteMessageBox:hover{
@@ -50,7 +50,13 @@ a{text-decoration: none; color: white;}
     /* border: 1px solid #363636; */
     height: 60px;
 }
-.MessageBox:hover{background-color: #363636;}
+.allBox{
+    width: 200px;
+}
+/* .allBox:hover{
+    background-color: #363636;
+} */
+/* .MessageBox:hover{background-color: #363636;} */
 .left{
     background-color:black;
     border:1px solid #363636;

@@ -15,6 +15,7 @@ const chatFile = client.fs.readdirSync("./page/Js/chatEventListeners")
 const loginFile = client.fs.readdirSync("./page/Js/loginEventListeners")
 const registerFile = client.fs.readdirSync("./page/Js/registerEventListeners")
 client.fs.writeFileSync("./page/Js/eventNames.json", JSON.stringify({chatFile, loginFile, registerFile},null,1),"utf-8")
+
 //=====================//Bağlantılar Başlatılır//=====================//
 client.app = client.express()
 const server = client.app.listen(3000)

@@ -1,24 +1,23 @@
 {
  "chatFile": [
-  "Box-History-Delete.js",
-  "MessageBoxCreate.js",
-  "onAuth.js",
-  "onChat.js",
-  "onSelectedHistory.js",
-  "outButtonClick.js",
-  "sendButtonClick.js",
-  "sendKeyPress.js"
+  "addDmBox.js",
+  "BoxEvents.js",
+  "loadDmBox.js",
+  "logOutClick.js",
+  "sendMessage.js",
+  "sendMessageButton.js",
+  "setDmBox.js"
  ],
  "loginFile": [
-  "onAuth.js",
-  "onLoginClick.js",
-  "onPassKeypress.js",
-  "onUsernameKeypress.js"
+  "auth.js",
+  "loginClick.js",
+  "passKeypress.js",
+  "usernameKeypress.js"
  ],
  "registerFile": [
-  "onAddUser.js",
-  "onAuth.js",
-  "onPassKeypress.js",
-  "onRegisterClick.js"
+  "addUser.js",
+  "auth.js",
+  "passKeypress.js",
+  "registerClick.js"
  ]
 }

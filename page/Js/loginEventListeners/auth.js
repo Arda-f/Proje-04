@@ -10,7 +10,7 @@ function execute(client) {
                 //Token ile giriş yapılıyorsa şifre istemez
                 if(item.token == datas[i].token)
                 {
-                    window.location.href += "chat.html"
+                    window.location.href = `./users/${item.user}/index.html`
                 }
             }
         }
@@ -24,7 +24,8 @@ function execute(client) {
                 localStorage.setItem("user-info", JSON.stringify(data))
                 if(client.remember.checked){localStorage.setItem("remember",true)}
                 else{localStorage.setItem("remember",false)}
-                window.location.href = "chat.html"
+                window.location.reload()
+
             }
             else
             {
@@ -35,7 +36,7 @@ function execute(client) {
                     localStorage.setItem("user-info", JSON.stringify(data))
                     if(client.remember.checked){localStorage.setItem("remember",true)}
                     else{localStorage.setItem("remember",false)}
-                    window.location.href = "chat.html"
+                    window.location.reload()
                 }  
             }
         }
