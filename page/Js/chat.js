@@ -16,7 +16,7 @@ client.messageArea.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
 document.addEventListener("DOMContentLoaded", () => {
     if(JSON.parse(localStorage.getItem("user-info")) == null)
     {
-        document.location.href = "http://localhost:3000"
+        document.location.href = config.host
     }
     eventNames.chatFile.forEach(file => {
         const module = import("./chatEventListeners/" + file)
