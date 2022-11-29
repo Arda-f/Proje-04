@@ -11,7 +11,8 @@ const client = {
     logout: document.getElementById("out"),
     join: document.getElementById("joinBox")
 }
-client.messageArea.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+console.log(client)
+client.messageArea.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
 document.addEventListener("DOMContentLoaded", () => {
     if(JSON.parse(localStorage.getItem("user-info")) == null)
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     eventNames.chatFile.forEach(file => {
         const module = import("./chatEventListeners/" + file)
         module.then(value => value.default(client))
+        module.then(value => console.log(value.default))
     })
     if(document.location.pathname != "/users/federaliste/index.html")
     {

@@ -6,7 +6,6 @@ module.exports = {
                 rows.forEach(row => {
                     if(data.name == row.name)
                     {
-                        console.log("girilen isim bulundu")
                         if(client.fs.existsSync(`./page/users/${data.user}/`))
                         {
                             console.log("mkdir skipped")
@@ -16,8 +15,8 @@ module.exports = {
                             client.fs.mkdirSync(`./page/users/${data.user}/`)
                         }
                         const script3 = `INSERT INTO ${data.sender}_DmBoxList(name, comment) VALUES(
-                            '${data.name}',
-                            '${data.comment}'
+                            '${row.name}',
+                            '${row.comment}'
                         )` 
                         client.db.run(script3)
                         const script2 = `CREATE TABLE IF NOT EXISTS ${data.name}_${data.sender}_DmBox(
@@ -25,8 +24,12 @@ module.exports = {
                             message TEXT,
                             user TEXT)`
                         client.db.run(script2)
-                        client.fs.copyFileSync(`./page/users/${data.user}/${data.name}_DmBox.html`,
-                        `./page/users/${data.sender}/${data.name}.html`)
+                        client.fs.writeFileSync(`./page/users/${data.user}/${data.name}_DmBox.html`,
+                            client.fs.readFileSync("./page/example.txt","utf-8").toString()
+                        )
+                        socket.emit("joinDmBox",{
+                            user: data.user
+                        })
                     }
                 })
             })

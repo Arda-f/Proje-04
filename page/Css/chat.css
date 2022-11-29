@@ -1,3 +1,16 @@
+#info{
+    float: right;
+    width: 400px;
+    overflow-x: hidden;
+    height: 50px;
+    border: 1px solid #363636;
+}
+#out{
+    width: max-content;
+    height: max-content;
+    margin-top: 15px;
+    border: 1px solid #363636;
+}
 .deleteMessageBox{
     background-color: black;
     color: white;
@@ -41,9 +54,9 @@ a{text-decoration: none; color: white;}
     display: block;
     overflow-y: scroll;
     width: 320px;
-    height: 607px;
+    height: 639px;
     position: absolute;
-    margin-left: 11%;
+    /* margin-left: 11%; */
     border: 1px solid #363636;
 }
 .MessageBox{
@@ -58,10 +71,6 @@ a{text-decoration: none; color: white;}
 .allBox{
     width: 200px;
 }
-/* .allBox:hover{
-    background-color: #363636;
-} */
-/* .MessageBox:hover{background-color: #363636;} */
 .left{
     background-color:black;
     border:1px solid #363636;
@@ -81,8 +90,8 @@ a{text-decoration: none; color: white;}
 #border{
     border: 1px solid #363636;
     width: 610px;
-    height: 597px;
-    margin-left: 35%;
+    height: 629px;
+    margin-left: 24%;
     padding: 5px;
 }
 #feedback{

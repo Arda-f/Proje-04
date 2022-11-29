@@ -31,6 +31,7 @@ export default (client) => {
                     Span.className = "selfSpan"
                     Name.innerText = joinName[i].value
                     Span.innerText = joinSpan[i].value
+                    a.href = joinName[i].value + "_DmBox.html"
                     joinName[i].replaceWith(Name)
                     joinSpan[i].replaceWith(Span)
                     client.socket.emit("joinDmBox",{
@@ -38,6 +39,7 @@ export default (client) => {
                         user: joinName[i].value,
                         sender: JSON.parse(localStorage.getItem("user-info")).user
                     })
+                    document.location.reload()
                 }
             })
         }

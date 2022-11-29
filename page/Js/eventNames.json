@@ -1,10 +1,11 @@
 {
  "chatFile": [
-  "addDmBox.js",
   "BoxEvents.js",
+  "addDmBox.js",
   "joinDmBox.js",
   "loadDmBox.js",
   "logOutClick.js",
+  "onJoinDmBox.js",
   "sendMessage.js",
   "sendMessageButton.js",
   "setDmBox.js"

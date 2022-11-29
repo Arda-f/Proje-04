@@ -14,6 +14,7 @@
     "dotenv": "^16.0.3",
     "event-emitter": "^0.3.5",
     "eventemitter3": "^4.0.7",
+    "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "md5": "^2.3.0",
     "mysql": "^2.18.1",

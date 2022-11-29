@@ -2,6 +2,7 @@ export default (client) => {
     client.socket.on("loadDmBox", data => {
         data.forEach(value => {
             //BoxLoader
+            console.log(value)
             const a = document.createElement("div")
             a.href = "#"
             a.className = "allBox"
