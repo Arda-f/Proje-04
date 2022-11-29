@@ -8,7 +8,8 @@ const client = {
     messageArea: document.getElementById("msgArea"),
     messageButton: document.getElementById("btn"),
     bar: document.getElementById("bar"),
-    logout: document.getElementById("out")
+    logout: document.getElementById("out"),
+    join: document.getElementById("joinBox")
 }
 client.messageArea.innerText = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
@@ -58,3 +59,4 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("pageName","index")
     }
 })
+

@@ -5,7 +5,7 @@ module.exports = {
     //Kullanıcı veri tabanını tamınlar
     // var db = new client.sqlite.Database("./database/logedUsers.sqlite",(e) => {if(e){console.log(e)}})
     socket.on("auth", datas => {
-        // // // // // // // // // // // // // // // // // // // // // // 
+        // // // // // // // // // // // // // // // // // // // // // //         
         if(client.fs.existsSync(`./page/users/${datas.user}/`))
         {
           console.log("mkdir skipped")
@@ -26,6 +26,13 @@ module.exports = {
           //Veri tabanından çekilen bilgi forma iletilir
           client.db.all("SELECT * FROM userİnfo", (err, rows) => {
             datas = rows
+            datas.forEach(data => {
+              const script1 = `CREATE TABLE IF NOT EXISTS ${data.user}_DmBoxList(
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                comment TEXT)`
+              client.db.run(script1)
+            })
             socket.emit("auth", datas)
           })
         }

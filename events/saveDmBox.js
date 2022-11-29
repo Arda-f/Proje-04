@@ -1,7 +1,7 @@
 module.exports = {
     execute(client, socket){
         socket.on("saveDmBox", data => {
-            const script2 = `IF EXISTS INSERT INTO ${data.user}_DmBoxList(name, comment) VALUES(
+            const script2 = `INSERT INTO ${data.user}_DmBoxList(name, comment) VALUES(
                 '${data.name}',
                 '${data.comment}'
             )` 

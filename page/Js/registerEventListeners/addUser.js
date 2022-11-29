@@ -7,7 +7,7 @@ function execute(client) {
         else
         {
             localStorage.setItem("user-info", JSON.stringify(datas))
-            window.location.href = `http://localhost:3000/users/${datas.user}/index.html`
+            window.location.href = `http://localhost:3000/`
 
         }
     })

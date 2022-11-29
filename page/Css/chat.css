@@ -10,11 +10,16 @@
     background-color: white;
     color: black;
 }
-#addBox{
-    margin-left: 60px;
+.addBox{
+    margin-left: 25px;
     width: max-content;
     margin-top: 10px;
     /* border: 1px solid #363636; */
+}
+#joinBox{
+    float: right;
+    margin-right: 35px;
+    width: max-content;
 }
 img{
     width: 60px;

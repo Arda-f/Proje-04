@@ -2,6 +2,7 @@
  "chatFile": [
   "addDmBox.js",
   "BoxEvents.js",
+  "joinDmBox.js",
   "loadDmBox.js",
   "logOutClick.js",
   "sendMessage.js",
